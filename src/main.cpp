@@ -15,16 +15,15 @@
 
 using std::string;
 
-Box* parse(string filename, Box* mp4box) {
+void parse(string filename, Box *mp4box) {
 	printf("\n\n----------MP4 Parse (%s)------------\n", filename.c_str());
 	std::ifstream f(filename, f.in | f.binary);
 	if (!f) {
 		std::cerr << "Cannot open file.\n";
-		return NULL;
+	} else {
+		mp4box->parse(f, INT_MAX, 0);
+		f.close();
 	}
-
-	mp4box->parse(f, INT_MAX, 0);
-	f.close();
 }
 
 void mp4_stats(unsigned long long total_file_size, Box *mp4box) {
@@ -41,7 +40,7 @@ void mp4_stats(unsigned long long total_file_size, Box *mp4box) {
 	printf("creation_time: %s", asctime(localtime(&mvhd_box->creation_time)));
 	printf("modification_time: %s",
 			asctime(localtime(&mvhd_box->modification_time)));
-	if(d>0) {
+	if (d > 0) {
 		printf("Bitrate: %.2f kb/s\n", (total_file_size / d) * 8.0 / 1000);
 	}
 	printf("Total Filesize: %llu bytes\n", total_file_size);
@@ -54,11 +53,12 @@ void mp4_stats(unsigned long long total_file_size, Box *mp4box) {
 		for (Box *entry : stsdEntries) {
 			printf("\tFormat: %.4s", entry->type);
 			string type_str(entry->type, entry->type + 4);
-			string format = track_boxes[t - 1]->get("mdia")->get("hdlr")->getp("handler_subtype");
+			string format = track_boxes[t - 1]->get("mdia")->get("hdlr")->getp(
+					"handler_subtype");
 			if (format == "vide") {
 				VideoSampleEntry *vsd = dynamic_cast<VideoSampleEntry*>(entry);
 				printf("\tsize=%dx%d", vsd->width, vsd->height);
-			} else if(format == "soun") {
+			} else if (format == "soun") {
 				AudioSampleEntry *asd = dynamic_cast<AudioSampleEntry*>(entry);
 				printf("\tsample_rate=%llu", asd->sample_rate);
 			}
@@ -66,20 +66,20 @@ void mp4_stats(unsigned long long total_file_size, Box *mp4box) {
 		}
 		TimeToSampleBox *stts_box = dynamic_cast<TimeToSampleBox*>(track_boxes[t
 				- 1]->get("mdia")->get("minf")->get("stbl")->get("stts"));
-		if(d>0){
+		if (d > 0) {
 			printf("\tFrame Rate: %.2f\n", stts_box->total_sample_count / d);
 		}
 		printf("\n");
-		printf("Total mdat boxes: %d", mp4box->getv("mdat").size());
 	}
+	printf("Total mdat boxes: %d\n", mp4box->getv("mdat").size());
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
 
 	MainBox *mp4box = new MainBox();
 	size_t total_file_size = 0;
 
-	for(int i=1;i<argc;i++) {
+	for (int i = 1; i < argc; i++) {
 		parse(argv[i], mp4box);
 
 		std::ifstream f(argv[i], f.in | f.binary);
