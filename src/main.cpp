@@ -57,10 +57,10 @@ void mp4_stats(unsigned long long total_file_size, Box *mp4box) {
 					"handler_subtype");
 			if (format == "vide") {
 				VideoSampleEntry *vsd = dynamic_cast<VideoSampleEntry*>(entry);
-				printf("\tsize=%dx%d", vsd->width, vsd->height);
+				printf(" (video)\tsize=%dx%d", vsd->width, vsd->height);
 			} else if (format == "soun") {
 				AudioSampleEntry *asd = dynamic_cast<AudioSampleEntry*>(entry);
-				printf("\tsample_rate=%llu", asd->sample_rate);
+				printf(" (audio)\tsample_rate=%llu", asd->sample_rate);
 			}
 			printf("\n");
 		}
