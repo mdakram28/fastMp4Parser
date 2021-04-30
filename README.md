@@ -135,7 +135,7 @@ Track #1:
         Format: avc1    size=320x240
         Frame Rate: 15.00
 
-Total mdat boxes: 2Track #2:
+Track #2:
         Format: mp4a    sample_rate=131088
         Frame Rate: 46.88
 
