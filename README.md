@@ -1,6 +1,35 @@
 # Fast MP4 Parsing
 The contents of mp4 files are parsed and the consolidated stats are printed at the end.
-
+```
+|
+|--Data                                         # Input video files
+|  |--sample-mp4-file.mp4                       # Sample input 1
+|  |--file_example_MP4_480_1_5MG.mp4            # Sample input 2
+|  |--segment                                   
+|     |-_fileinit.mp4                           # fmp4 init
+|     |-_file1.mp4                              # fmp4 segments 1-5
+|     |-_file2.mp4
+|     |-_file3.mp4
+|     |-_file4.mp4
+|     |-_file5.mp4
+|--src                                          # Source Code
+|  |--main.cpp                                  # Entry Point
+|  |--box_util.h                                # Box core logic
+|  |--io_util.h                                 # IO
+|  |--constants.h                               # Constants
+|  |--boxes                                     # ISO 14486 format mp4 boxes parsing logic
+|     |--box.h                                  # ftyp
+|     |--movie_box.h                            # moov, mvhd
+|     |--media_data_box.h                       # mdat
+|     |--track_box.h                            # trak, tkhd
+|     |--media_box.h                            # mdia, minf, mdhd, hdlr
+|     |--sample_table_box.h                     # stbl, stsd, stts
+|     |--video_sample_entry.h                   # Video Sample Description Entry
+|     |--audio_sample_entry.h                   # Audio Sample Description Entry
+|
+.
+.
+```
 ## Build
 ```
 $ g++ -o Debug/fastMp4 src/main.cpp
