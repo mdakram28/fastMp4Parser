@@ -7,11 +7,11 @@ The contents of mp4 files are parsed and the consolidated stats are printed at t
 |  |--file_example_MP4_480_1_5MG.mp4            # Sample input 2
 |  |--segment                                   
 |     |-_fileinit.mp4                           # fmp4 init
-|     |-_file1.mp4                              # fmp4 segments 1-5
-|     |-_file2.mp4
-|     |-_file3.mp4
-|     |-_file4.mp4
-|     |-_file5.mp4
+|     |-_file1.m4s                              # fmp4 segments 1-5
+|     |-_file2.m4s
+|     |-_file3.m4s
+|     |-_file4.m4s
+|     |-_file5.m4s
 |--src                                          # Source Code
 |  |--main.cpp                                  # Entry Point
 |  |--box_util.h                                # Box core logic
