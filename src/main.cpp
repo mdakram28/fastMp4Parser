@@ -48,6 +48,7 @@ void mp4_stats(unsigned long long total_file_size, Box *mp4box) {
 	std::vector<Box*> track_boxes = mp4box->get("moov")->getv("trak");
 	for (int t = 1; t <= track_boxes.size(); t++) {
 		printf("Track #%d: \n", t);
+
 		std::vector<Box*> stsdEntries = track_boxes[t - 1]->get("mdia")->get(
 				"minf")->get("stbl")->get("stsd")->getv();
 		for (Box *entry : stsdEntries) {
@@ -57,19 +58,26 @@ void mp4_stats(unsigned long long total_file_size, Box *mp4box) {
 					"handler_subtype");
 			if (format == "vide") {
 				VideoSampleEntry *vsd = dynamic_cast<VideoSampleEntry*>(entry);
-				printf(" (video)\tsize=%dx%d", vsd->width, vsd->height);
+				printf(" (video)\n\tFrame Dimensions: %dx%d", vsd->width, vsd->height);
 			} else if (format == "soun") {
 				AudioSampleEntry *asd = dynamic_cast<AudioSampleEntry*>(entry);
-				printf(" (audio)\tsample_rate=%llu", asd->sample_rate);
+				printf(" (audio)\n\tSample Rate: %llu", asd->sample_rate);
 			}
 			printf("\n");
 		}
+
 		TimeToSampleBox *stts_box = dynamic_cast<TimeToSampleBox*>(track_boxes[t
 				- 1]->get("mdia")->get("minf")->get("stbl")->get("stts"));
 		if (d > 0) {
-			printf("\tFrame Rate: %.2f\n", stts_box->total_sample_count / d);
+			printf("\tFrame Rate: %d\n", (int) (stts_box->total_sample_count / d));
 		}
-		printf("\n");
+
+		SampleSizeBox *stsz_box = dynamic_cast<SampleSizeBox*>(track_boxes[t
+				- 1]->get("mdia")->get("minf")->get("stbl")->get("stsz"));
+		if (d > 0) {
+			printf("\tBitrate: %d kb/s\n", (int)(stsz_box->total_samples_size *8.0/ (d*1000)));
+		}
+
 	}
 	printf("Total mdat boxes: %d\n", mp4box->getv("mdat").size());
 }

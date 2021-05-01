@@ -15,49 +15,8 @@
 #include "../constants.h"
 #include "video_sample_entry.h"
 #include "audio_sample_entry.h"
-#include "media_box.h"
-
-struct TimeToSampleBoxEntry {
-	uint32_t sample_count;
-	uint32_t sample_delta;
-};
-
-class TimeToSampleBox: public Box {
-public:
-	char version;			// 1 byte
-	char flags[3];			// 3 bytes
-
-	int entry_count;
-	std::vector<TimeToSampleBoxEntry> entries;
-
-	int total_sample_count = 0;
-
-	TimeToSampleBox(Box &box) :
-			Box(box) {
-	}
-
-	virtual void print(int l) {
-		for (TimeToSampleBoxEntry entry : entries) {
-			pt(l);
-			printf("- sample_count=%d, sample_delta=%d\n", entry.sample_count,
-					entry.sample_delta);
-		}
-	}
-
-	virtual void parse(std::ifstream &f, int container_end, int level) {
-		BaseBox box;
-		read_bytes(f, &version, 1);
-		read_bytes(f, flags, sizeof(flags));
-
-		entry_count = read_uint32(f);
-		total_sample_count = 0;
-		for (int i = 1;
-				bool(f) && f.tellg() < container_end && i <= entry_count; i++) {
-			entries.push_back( { read_uint32(f), read_uint32(f) });
-			total_sample_count += entries[i - 1].sample_count;
-		}
-	}
-};
+#include "time_to_sample_box.h"
+#include "sample_size_box.h"
 
 class SampleDescriptionBox: public Box {
 public:
@@ -93,7 +52,7 @@ public:
 					"handler_subtype");
 			if (format == "vide") {
 				child = new VideoSampleEntry(box);
-			} else if(format == "soun") {
+			} else if (format == "soun") {
 				child = new AudioSampleEntry(box);
 			}
 
@@ -123,6 +82,9 @@ public:
 			child = new SampleDescriptionBox(copy_box);
 		} else if (!std::strncmp("stts", copy_box.type, 4)) {
 			child = new TimeToSampleBox(copy_box);
+		} else if (!std::strncmp("stsz", copy_box.type, 4)
+				|| !std::strncmp("stz2", copy_box.type, 4)) {
+			child = new SampleSizeBox(copy_box);
 		}
 		return child;
 	}
