@@ -1,9 +1,4 @@
-/*
- * audio_sample_entry.h
- *
- *  Created on: 30-Apr-2021
- *      Author: MAnsari15
- */
+
 
 #ifndef BOXES_AUDIO_SAMPLE_ENTRY_H_
 #define BOXES_AUDIO_SAMPLE_ENTRY_H_

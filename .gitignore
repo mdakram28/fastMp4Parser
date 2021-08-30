@@ -2,5 +2,5 @@
 .project
 .settings/
 test/
-main.d
+*.d
 .devcontainer/

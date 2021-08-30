@@ -62,7 +62,7 @@ void mp4_stats(unsigned long long total_file_size, Box *mp4box) {
 				printf(" (video)\n\tFrame Dimensions: %dx%d", vsd->width, vsd->height);
 			} else if (format == "soun") {
 				AudioSampleEntry *asd = dynamic_cast<AudioSampleEntry*>(entry);
-				printf(" (audio)\n\tSample Rate: %llu", asd->sample_rate);
+				printf(" (audio)\n\tSample Rate: %u", asd->sample_rate);
 			}
 			printf("\n");
 		}
@@ -80,7 +80,7 @@ void mp4_stats(unsigned long long total_file_size, Box *mp4box) {
 		}
 
 	}
-	printf("Total mdat boxes: %d\n", mp4box->getv("mdat").size());
+	printf("Total mdat boxes: %lu\n", mp4box->getv("mdat").size());
 }
 
 int main(int argc, char **argv) {
