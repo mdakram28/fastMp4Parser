@@ -1,0 +1,21 @@
+{
+    "tasks": [
+        {
+            "label": "c++ build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "--directory=${workspaceFolder}"
+            ],
+            "group":  {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal":"always"
+            },
+            "problemMatcher": "$gcc"
+        }
+    ],
+    "version": "2.0.0"
+}

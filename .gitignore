@@ -1,1 +1,6 @@
 /Release/
+.project
+.settings/
+test/
+main.d
+.devcontainer/

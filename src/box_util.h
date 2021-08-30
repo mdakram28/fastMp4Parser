@@ -24,7 +24,7 @@ public:
 	uint32_t size;
 	char type[4];
 
-	std::map<std::string, std::vector<Box*>> child_map;
+	std::map< std::string, std::vector< Box* > > child_map;
 	std::vector<Box*> child_list;
 	Box *parent;
 	std::map<std::string, std::string> props;

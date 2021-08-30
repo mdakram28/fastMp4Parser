@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : ffmpeg.cpp
+// Name        : main.cpp
 // Author      : Akram Ansari
 // Version     :
 // Copyright   : 
@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <limits.h>
 #include <fstream>
 #include <string>
 #include <filesystem>
@@ -83,6 +84,12 @@ void mp4_stats(unsigned long long total_file_size, Box *mp4box) {
 }
 
 int main(int argc, char **argv) {
+
+	// Print usage instructions if no arguments are passed
+	if (argc < 2) {
+		printf("Usage: fastMp4 [list_of_files]\n");
+		return 0;
+	}
 
 	MainBox *mp4box = new MainBox();
 	size_t total_file_size = 0;

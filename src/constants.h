@@ -31,13 +31,13 @@ std::vector<std::string> VIDEO_FORMATS = {
 		"h263",     //H.263 video
 		"tiff",     //Tagged Image File Format
 		"raw ",     //Uncompressed RGB
-		"2vuY",     //Uncompressed Y´CbCr, 8-bit-per-component 4:2:2
-		"yuv2",     //Uncompressed Y´CbCr, 8-bit-per-component 4:2:2
-		"v308",     //Uncompressed Y´CbCr, 8-bit-per-component 4:4:4
-		"v408",     //Uncompressed Y´CbCr, 8-bit-per-component 4:4:4:4
-		"v216",     //Uncompressed Y´CbCr, 10, 12, 14, or 16-bit-per-component 4:2:2
-		"v410",     //Uncompressed Y´CbCr, 10-bit-per-component 4:4:4
-		"v210",     //Uncompressed Y´CbCr, 10-bit-per-component 4:2:2
+		"2vuY",     //Uncompressed Yï¿½CbCr, 8-bit-per-component 4:2:2
+		"yuv2",     //Uncompressed Yï¿½CbCr, 8-bit-per-component 4:2:2
+		"v308",     //Uncompressed Yï¿½CbCr, 8-bit-per-component 4:4:4
+		"v408",     //Uncompressed Yï¿½CbCr, 8-bit-per-component 4:4:4:4
+		"v216",     //Uncompressed Yï¿½CbCr, 10, 12, 14, or 16-bit-per-component 4:2:2
+		"v410",     //Uncompressed Yï¿½CbCr, 10-bit-per-component 4:4:4
+		"v210",     //Uncompressed Yï¿½CbCr, 10-bit-per-component 4:2:2
 };
 
 inline bool is_video_format(string &str) {
