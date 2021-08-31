@@ -34,9 +34,11 @@ The contents of mp4 files are parsed and the consolidated stats are printed at t
 .
 .
 ```
-## Build
+## Build (UNIX)
 ```
-$ g++ -o Debug/fastMp4 src/main.cpp
+$ mkdir build && cd build
+$ cmake ../
+$ cmake --build .
 ```
 
 ## Run
