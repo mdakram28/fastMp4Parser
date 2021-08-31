@@ -2,14 +2,11 @@
 #define BOX_H
 
 #include <fstream>
-#include <stdio.h>
 #include <algorithm>
-#include <time.h>
 #include <cstring>
-#include "movie_box.h"
 #include "../io_util.h"
 #include "../box_util.h"
-#include "media_data_box.h"
+#include "boxes.h"
 
 using std::string;
 
