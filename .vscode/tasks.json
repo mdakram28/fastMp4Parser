@@ -5,7 +5,6 @@
             "type": "shell",
             "command": "cmake",
             "args": [
-                // "--directory=${workspaceFolder}",
                 "--build", "${workspaceFolder}/build",
                 "--config", "Debug",
                 "--target", "all",

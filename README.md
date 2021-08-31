@@ -14,8 +14,10 @@ The contents of mp4 files are parsed and the consolidated stats are printed at t
 |     |-_file5.m4s
 |--src                                          # Source Code
 |  |--main.cpp                                  # Entry Point
-|  |--box_util.h                                # Box core logic
-|  |--io_util.h                                 # IO
+|  |--box_util.cpp                              # Box util impl
+|  |--box_util.h                                # Box util include
+|  |--io_util.cpp                               # IO util impl
+|  |--io_util.h                                 # IO util include
 |  |--constants.h                               # Constants
 |  |--boxes                                     # ISO 14486 format mp4 boxes parsing logic
 |     |--box.h                                  # ftyp
