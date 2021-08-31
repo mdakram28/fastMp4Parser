@@ -8,7 +8,7 @@
             "name": "(lldb) Launch",
             "type": "lldb",
             "request": "launch",
-            "program": "${workspaceRoot}/output/fastmp4",
+            "program": "${workspaceRoot}/build/fastmp4",
             "args": [
                 "data/sample-mp4-file.mp4"
             ],
@@ -17,7 +17,7 @@
             "environment": [],
             "externalConsole": true,
             "MIMode": "lldb",
-            "preLaunchTask": "c++ build"
+            "preLaunchTask": "cmake build"
         }
     ]
 }

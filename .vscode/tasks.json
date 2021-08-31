@@ -1,18 +1,23 @@
 {
     "tasks": [
         {
-            "label": "c++ build",
+            "label": "cmake build",
             "type": "shell",
-            "command": "make",
+            "command": "cmake",
             "args": [
-                "--directory=${workspaceFolder}"
+                // "--directory=${workspaceFolder}",
+                "--build", "${workspaceFolder}/build",
+                "--config", "Debug",
+                "--target", "all",
+                "-j","10",
+                "--"
             ],
             "group":  {
                 "kind": "build",
                 "isDefault": true
             },
             "presentation": {
-                "reveal":"always"
+                "reveal":"silent"
             },
             "problemMatcher": "$gcc"
         }
