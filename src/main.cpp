@@ -12,7 +12,7 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
-#include "boxes/box.h"
+#include <fastmp4parser/parser.h>
 
 using std::string;
 

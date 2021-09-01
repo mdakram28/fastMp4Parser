@@ -171,4 +171,22 @@ public:
     Box* add_child(std::ifstream &f, Box &copy_from);
 };
 
+
+class FileTypeBox: public Box {
+public:
+	char major_brand[4];
+	uint32_t minor_version;
+	string compatible_brands;
+
+	FileTypeBox(Box& box): Box(box) {}
+	void parse(std::ifstream &f, int box_end, int level);
+	void print(int l);
+};
+
+class MainBox: public ContainerBox {
+public:
+	MainBox(): ContainerBox() {}
+	Box* add_child(std::ifstream &f, Box& copy_box);
+};
+
 #endif //FASTMP4_BOXES_H
