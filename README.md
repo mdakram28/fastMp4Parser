@@ -21,7 +21,6 @@ The contents of mp4 files are parsed and the consolidated stats are printed at t
 |  |--box_util.hpp                              # Box util include
 |  |--io_util.cpp                               # IO util impl
 |  |--io_util.hpp                               # IO util include
-|  |--constants.hpp                             # Constants
 |  |--boxes                                     # ISO 14486 format mp4 boxes parsing logic
 |     |--box.hpp                                # ftyp
 |     |--box_movie.cpp                          # moov, mvhd
