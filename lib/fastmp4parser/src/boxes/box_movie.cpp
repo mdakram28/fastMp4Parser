@@ -1,7 +1,7 @@
 #include <algorithm>
-#include "../io_util.h"
-#include "../box_util.h"
-#include "boxes.h"
+#include "../io_util.hpp"
+#include "../box_util.hpp"
+#include "boxes.hpp"
 
 void MovieHeaderBox::parse(std::ifstream &f, int box_end, int level) {
     read_bytes(f, &version, 1);

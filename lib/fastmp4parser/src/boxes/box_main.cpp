@@ -1,9 +1,9 @@
 #include <fstream>
 #include <algorithm>
 #include <cstring>
-#include "../io_util.h"
-#include "../box_util.h"
-#include "boxes.h"
+#include "../io_util.hpp"
+#include "../box_util.hpp"
+#include "boxes.hpp"
 
 using std::string;
 

@@ -1,9 +1,9 @@
 #include <vector>
 #include <string>
 
-#include "../box_util.h"
-#include "../io_util.h"
-#include "boxes.h"
+#include "../box_util.hpp"
+#include "../io_util.hpp"
+#include "boxes.hpp"
 
 void VideoSampleEntry::print(int l) {
     pt(l);

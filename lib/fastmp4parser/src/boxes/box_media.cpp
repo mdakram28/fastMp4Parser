@@ -1,6 +1,6 @@
 #include <string.h>
-#include "../box_util.h"
-#include "boxes.h"
+#include "../box_util.hpp"
+#include "boxes.hpp"
 
 void MediaHandlerBox::parse(std::ifstream &f, int box_end, int level) {
     pre_defined = read_uint32(f);

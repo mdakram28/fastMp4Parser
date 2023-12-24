@@ -1,4 +1,7 @@
 # Fast MP4 Parsing
+Tool to parse MP4 ISOBMFF container (or container parts) and print the box header contents.
+
+## Folder structure
 The contents of mp4 files are parsed and the consolidated stats are printed at the end.
 ```
 |
@@ -15,25 +18,27 @@ The contents of mp4 files are parsed and the consolidated stats are printed at t
 |--src                                          # Source Code
 |  |--main.cpp                                  # Entry Point
 |  |--box_util.cpp                              # Box util impl
-|  |--box_util.h                                # Box util include
+|  |--box_util.hpp                              # Box util include
 |  |--io_util.cpp                               # IO util impl
-|  |--io_util.h                                 # IO util include
-|  |--constants.h                               # Constants
+|  |--io_util.hpp                               # IO util include
+|  |--constants.hpp                             # Constants
 |  |--boxes                                     # ISO 14486 format mp4 boxes parsing logic
-|     |--box.h                                  # ftyp
-|     |--movie_box.h                            # moov, mvhd
-|     |--media_data_box.h                       # mdat
-|     |--track_box.h                            # trak, tkhd
-|     |--media_box.h                            # mdia, minf, mdhd, hdlr
-|     |--sample_table_box.h                     # stbl, stsd
-|     |--time_to_sample_box.h                   # stts
-|     |--sample_size_box.h                      # stsz, stz2
-|     |--video_sample_entry.h                   # Video Sample Description Entry
-|     |--audio_sample_entry.h                   # Audio Sample Description Entry
+|     |--box.hpp                                # ftyp
+|     |--box_movie.cpp                          # moov, mvhd
+|     |--box_media_data.cpp                     # mdat
+|     |--box_track.h                            # trak, tkhd
+|     |--box_media.h                            # mdia, minf, mdhd, hdlr
+|     |--box_sample_table.cpp                   # stbl, stsd
+|     |--box_time_to_sample.cpp                 # stts
+|     |--box_sample_size.cpp                    # stsz, stz2
+|     |--box_video_sample_entry.cpp             # Video Sample Description Entry
+|     |--box_audio_sample_entry.cpp             # Audio Sample Description Entry
 |
 .
 .
 ```
+
+
 ## Build (UNIX)
 ```
 $ mkdir build && cd build

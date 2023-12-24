@@ -1,5 +1,5 @@
 #include <vector>
-#include "boxes.h"
+#include "boxes.hpp"
 
 void TimeToSampleBox::print(int l) {
     for (TimeToSampleBoxEntry entry : entries) {
