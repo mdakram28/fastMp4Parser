@@ -26,8 +26,8 @@ The contents of mp4 files are parsed and the consolidated stats are printed at t
 |     |--box.hpp                                # ftyp
 |     |--box_movie.cpp                          # moov, mvhd
 |     |--box_media_data.cpp                     # mdat
-|     |--box_track.h                            # trak, tkhd
-|     |--box_media.h                            # mdia, minf, mdhd, hdlr
+|     |--box_track.cpp                          # trak, tkhd
+|     |--box_media.cpp                          # mdia, minf, mdhd, hdlr
 |     |--box_sample_table.cpp                   # stbl, stsd
 |     |--box_time_to_sample.cpp                 # stts
 |     |--box_sample_size.cpp                    # stsz, stz2
